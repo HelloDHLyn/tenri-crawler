@@ -1,0 +1,7 @@
+{
+    "description": "Telegram으로 메시지를 전송한다",
+    "environment": {
+        "TENRI_BOT_URL": "",
+        "CHAT_ID": ""
+    }
+}

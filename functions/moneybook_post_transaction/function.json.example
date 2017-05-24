@@ -1,0 +1,6 @@
+{
+    "description": "지출/소득 내역을 추가한다.",
+    "environment": {
+        "TOPIC_ARN": ""
+    }
+}

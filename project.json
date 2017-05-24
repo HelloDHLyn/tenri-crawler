@@ -1,0 +1,9 @@
+{
+  "name": "tenri-bot",
+  "description": "My personal bot",
+  "runtime": "python",
+  "memory": 128,
+  "timeout": 5,
+  "role": "arn:aws:iam::225623829217:role/tenri-bot_lambda_function",
+  "environment": {}
+}

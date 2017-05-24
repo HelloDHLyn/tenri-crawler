@@ -61,7 +61,7 @@ def parse_moneybook(text):
         exit()
 
 
-def handler(event, context):
+def handle(event, context):
     chat_id = str(event['message']['from']['id'])
     if chat_id != os.environ['TELEGRAM_ID']:
         exit()

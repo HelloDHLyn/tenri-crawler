@@ -5,7 +5,7 @@ import urllib
 import urllib2
 
 
-def handler(event, context):
+def handle(event, context):
     text = event['Records'][0]['Sns']['Message']
     data = {
         'chat_id': os.environ['CHAT_ID'],

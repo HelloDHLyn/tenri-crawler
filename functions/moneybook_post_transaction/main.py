@@ -38,7 +38,7 @@ def save_transaction(type, place, price):
     )
 
 
-def handler(event, context):
+def handle(event, context):
     if event['Records']:
         data = json.loads(event['Records'][0]['Sns']['Message'])
         save_transaction(type=data['type'], place=data['place'], price=data['price'])

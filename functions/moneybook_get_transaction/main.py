@@ -47,7 +47,7 @@ def get_by_month(transaction_type, month):
     )
 
 
-def handler(event, context):
+def handle(event, context):
     if event['Records']:
         data = json.loads(event['Records'][0]['Sns']['Message'])
         if data['action'] == 'month':

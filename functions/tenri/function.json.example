@@ -1,0 +1,7 @@
+{
+    "description": "",
+    "environment": {
+        "TELEGRAM_ID": "",
+        "TOPIC_ARN": ""
+    }
+}
