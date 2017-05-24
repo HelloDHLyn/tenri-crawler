@@ -43,13 +43,29 @@ def parse_moneybook(text):
 
         exit()
 
+    result = re.search(ur'(?P<place>[가-힣a-zA-Z\d\s]+) (?P<price>\d+)원 소득', text, re.UNICODE)
+    if result:
+        place = result.group('place')  # 사용처
+        price = int(result.group('price'))  # 금액
+        json_data = json.dumps({
+            'type': 'INCOME',
+            'place': place,
+            'price': price
+        })
+
+        sns.publish(
+            TopicArn=get_topic_arn('tenri_moneybook_post_transaction'),
+            Message=json_data
+        )
+
+        exit()
+
     # 총 지출
     result = re.search(ur'(?P<month>\d+)월 총지출', text, re.UNICODE)
     if result:
         month = int(result.group('month'))  # 월
         json_data = json.dumps({
             'action': 'month',
-            'type': 'EXPENSE',
             'month': month
         })
 
