@@ -41,8 +41,8 @@ def get_by_month(month):
     income_sum = sum(map(lambda i: int(i['price']['N']), incomes))
 
     message = "%d월 지출 %d건, 소득 %d건의 내역이 있습니다.\n\n" \
-              "소득 : %s원\n" \
               "지출 : %s원\n" \
+              "소득 : %s원\n" \
               "순이익 : %s원\n" \
               % (month, len(expenses), len(incomes),
                  "{:,}".format(expense_sum), "{:,}".format(income_sum), "{:,}".format(income_sum - expense_sum))
