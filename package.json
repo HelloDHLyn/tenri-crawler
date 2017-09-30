@@ -1,0 +1,27 @@
+{
+  "name": "tenri",
+  "version": "1.0.0",
+  "description": "My personal bot",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^3.5.3",
+    "chai": "^4.1.2"
+  },
+  "scripts": {
+    "test": "mocha --recursive '**/*.spec.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lynlab/tenri-bot.git"
+  },
+  "author": "hellodhlyn@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lynlab/tenri-bot/issues"
+  },
+  "homepage": "https://github.com/lynlab/tenri-bot#readme"
+}

@@ -1,6 +1,6 @@
+# Sensitives
 function.json
 
-# Python dependencies
-functions/*/*/*
-
+# Generated files
 .idea
+node_modules
