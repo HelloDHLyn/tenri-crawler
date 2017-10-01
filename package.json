@@ -6,7 +6,9 @@
   "directories": {
     "test": "tests"
   },
-  "dependencies": {},
+  "dependencies": {
+    "aws-sdk": "^2.125.0"
+  },
   "devDependencies": {
     "mocha": "^3.5.3",
     "chai": "^4.1.2"

@@ -1,15 +1,16 @@
 {
-    "runtime": "python3.6",
-    "description": "뉴스 속보를 읽어와 telegram으로 발송한다.",
-    "environment": {
-        "CONSUMER_KEY": "",
-        "CONSUMER_SECRET": "",
-        "ACCESS_TOKEN_KEY": "",
-        "ACCESS_TOKEN_SECRET": "",
-        "LYNLAB_API_KEY": "",
-        "TOPIC_ARN": ""
-    },
-    "hooks": {
-        "build": "pip3 install -r requirements.txt -t ."
-    }
+  "runtime": "nodejs6.10",
+  "description": "뉴스 속보를 읽어와 telegram으로 발송한다.",
+  "environment": {
+    "CONSUMER_KEY": "",
+    "CONSUMER_SECRET": "",
+    "ACCESS_TOKEN_KEY": "",
+    "ACCESS_TOKEN_SECRET": "",
+    "LYNLAB_API_KEY": "",
+    "TOPIC_ARN": ""
+  },
+  "hooks": {
+    "build": "cp -R ../../lib .; npm install",
+    "clean": "rm -rf lib node_modules"
+  }
 }
