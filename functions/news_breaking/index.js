@@ -20,8 +20,6 @@ module.exports.handle = (event, context, callback) => {
     let options = {
       user_id: NEWS_USER_ID,
       since_id: data.value,
-      include_rts: false,
-      exclude_replies: true,
     };
 
     client.get('statuses/user_timeline', options, (err, tweets, res) => {
@@ -33,12 +31,12 @@ module.exports.handle = (event, context, callback) => {
       tweets
         .filter(tweet => tweet.text.includes('속보'))
         .forEach(tweet => {
-          console.log(tweet.text);
+          console.log(`${tweet.id} - ${tweet.text}`);
           tenri.sendMessage(tweet.text);
         });
 
       // LAST_ID 갱신
-      let lastId = tweets[0].id;
+      let lastId = tweets[0].id + 1;
       lynapi.keyValue.setValue('TENRI_NEWS_LAST_ID', lastId)
         .then(data => callback())
         .catch(err => callback(err));
