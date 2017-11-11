@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "twitter": "^1.7.1"
+    "twitter": "^1.7.1",
+    "bignumber.js": "^4.1.0"
   }
 }

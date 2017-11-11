@@ -1,9 +1,10 @@
 'use strict';
 
+const BigNumber = require('bignumber.js');
+const Twitter = require('twitter');
+
 const lynapi = require('./lib/lynlab-api');
 const tenri = require('./lib/tenri');
-
-const Twitter = require('twitter');
 
 // 연합뉴스 유저 ID
 const NEWS_USER_ID = 147451838;
@@ -19,7 +20,7 @@ module.exports.handle = (event, context, callback) => {
   lynapi.keyValue.getValue('TENRI_NEWS_LAST_ID').then(data => {
     let options = {
       user_id: NEWS_USER_ID,
-      since_id: data.value,
+      since_id: new BigNumber(data.value).plus(1).toString(),
     };
 
     client.get('statuses/user_timeline', options, (err, tweets, res) => {
@@ -36,8 +37,8 @@ module.exports.handle = (event, context, callback) => {
         });
 
       // LAST_ID 갱신
-      let lastId = tweets[0].id + 1;
-      lynapi.keyValue.setValue('TENRI_NEWS_LAST_ID', lastId)
+      let lastId = new BigNumber(tweets[0].id_str);
+      lynapi.keyValue.setValue('TENRI_NEWS_LAST_ID', lastId.toString())
         .then(data => callback())
         .catch(err => callback(err));
     });
