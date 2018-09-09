@@ -1,2 +1,8 @@
-# Tenri Bot
-My personal bot via telegram
+# Tenri Crawler
+
+> Crawler, just for me!
+
+## Prerequisites
+
+  - Apex ([link](http://apex.run))
+  - Python 3.6+

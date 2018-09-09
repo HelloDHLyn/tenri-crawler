@@ -1,15 +1,16 @@
 {
     "runtime": "python3.6",
-    "description": "뉴스 속보를 읽어와 telegram으로 발송한다.",
+    "description": "뉴스 속보를 읽어와 메시지 패킷을 발행한다.",
     "environment": {
+        "PYTHONPATH": "/var/runtime:/var/task/site-packages",
         "CONSUMER_KEY": "",
         "CONSUMER_SECRET": "",
         "ACCESS_TOKEN_KEY": "",
         "ACCESS_TOKEN_SECRET": "",
-        "LYNLAB_API_KEY": "",
-        "TOPIC_ARN": ""
+        "LYNLAB_API_KEY": ""
     },
     "hooks": {
-        "build": "pip3 install -r requirements.txt -t ."
+        "build": "pip3 install -r requirements.txt -t ./site-packages",
+        "clean": "rm -rf ./site-packages"
     }
 }

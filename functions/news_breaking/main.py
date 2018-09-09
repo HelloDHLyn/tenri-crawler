@@ -30,10 +30,19 @@ def set_last_id(last_id):
 
 
 def send_message(message):
-    sns = boto3.client('sns')
-    sns.publish(
-        TopicArn=f"{os.environ['TOPIC_ARN']}:tenri_send_message",
-        Message=message
+    sqs = boto3.client('sqs')
+
+    queue_url = sqs.get_queue_url(QueueName='lynlab-tenri-discord')['QueueUrl']
+    sqs.send_message(
+        QueueUrl=queue_url,
+        MessageBody=json.dumps({
+            'channel_name': 'breaking',
+            'content': '속보가 도착했습니다.',
+            'embed': {
+                'title': '본문',
+                'description': message,
+            },
+        }, ensure_ascii=False),
     )
 
 
@@ -45,7 +54,7 @@ def handle(event, context):
 
     statuses = api.GetUserTimeline(user_id=USER_ID, since_id=get_last_id(), include_rts=False, exclude_replies=True)
     for status in reversed(statuses):
-        if '속보' in status.text:
+        if '속보' in status.text or '1보' in status.text:
             send_message(status.text)
 
     if len(statuses) > 0:
