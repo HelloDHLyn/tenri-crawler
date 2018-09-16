@@ -37,11 +37,7 @@ def send_message(message):
         QueueUrl=queue_url,
         MessageBody=json.dumps({
             'channel_name': 'breaking',
-            'content': '속보가 도착했습니다.',
-            'embed': {
-                'title': '본문',
-                'description': message,
-            },
+            'content': message,
         }, ensure_ascii=False),
     )
 
